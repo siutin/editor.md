@@ -48,6 +48,7 @@
     editormd.classPrefix = "editormd-";
 
     editormd.defaults = {
+        textareaName: "markdown-doc",
         mode: "gfm", //gfm or markdown
         markdown: "",
         width: "100%",
@@ -210,6 +211,7 @@
             var editor = this.editor = $("#" + id);
             var settings = this.settings = $.extend(true, editormd.defaults, options);
             var markdownDoc = (settings.markdown === "") ? editor.children("[type=\"text/markdown\"]").html() : settings.markdown;
+            var textareaName = settings.textareaName;
             this.id = id;
 
             this.classNames = {
@@ -240,7 +242,7 @@
 
             var appendElements = [
                 '<div class="' + classPrefix + 'toolbar"><div class="' + classPrefix + 'toolbar-container"><ul class="' + classPrefix + 'menu"></ul></div></div>',
-                '<textarea id="test123" class="' + this.classNames.textarea.markdown + '" name="' + id + '-markdown-doc" placeholder="now coding markdown...">' + markdownDoc + '</textarea>',
+                '<textarea id="test123" class="' + this.classNames.textarea.markdown + '" name="' + textareaName + '" placeholder="now coding markdown...">' + markdownDoc + '</textarea>',
                 '<textarea class="' + this.classNames.textarea.html + '" name="' + id + '-html-code"></textarea>',
                 '<div class="' + classPrefix + 'preview"><div class="markdown-body ' + classPrefix + 'preview-container"></div>',
                 "</div>"
